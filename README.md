@@ -48,8 +48,6 @@ GitHub Repository → CodePipeline → CodeBuild → Docker Hub → AWS EKS → 
 - **Build Stage**: AWS CodeBuild with custom `buildspec.yml`
 - **Deploy Stage**: Automatic deployment to EKS cluster
 
-### 🔄 CodePipeline Success
-![Pipeline Screenshot](./pipeline.png)
 
 ### ✅ Kubernetes Configuration
 - **Deployment**: 2 replicas for high availability
