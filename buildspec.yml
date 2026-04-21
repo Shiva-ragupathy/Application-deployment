@@ -21,7 +21,7 @@ phases:
       - echo Deploying application to EKS
       - kubectl apply -f k8s/deployment.yaml    # ← Added k8s/ prefix
       - kubectl apply -f k8s/service.yaml        # ← Added k8s/ prefix
-      - kubectl rollout status deployment/brain-tasks-app  # ← Added to verify deployment
+      - kubectl rollout status deployment/brain-app  # ← Added to verify deployment
 
   post_build:
     commands:
