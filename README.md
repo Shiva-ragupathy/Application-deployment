@@ -30,15 +30,26 @@ GitHub Repository → CodePipeline → CodeBuild → Docker Hub → AWS EKS → 
 - Application runs on port 3000
 - Docker image stored on Docker Hub: `shivark1996/brain-tasks-app:latest`
 
+### 🐳 Docker Hub Repository
+![Docker Hub Screenshot](./dockerhub.png)
+
+
+
 ### ✅ AWS Infrastructure
 - **EKS Cluster**: Created and configured Kubernetes cluster (`brain-cluster`)
 - **EC2 Instance**: Used for cluster management and kubectl commands
 - **LoadBalancer**: Application exposed via AWS LoadBalancer with external access
 
+### 🖥️ Application Running
+![Application Screenshot](./app.png)
+
 ### ✅ CI/CD Pipeline (AWS CodePipeline)
 - **Source Stage**: Connected to GitHub repository (Brain-Tasks-App)
 - **Build Stage**: AWS CodeBuild with custom `buildspec.yml`
 - **Deploy Stage**: Automatic deployment to EKS cluster
+
+### 🔄 CodePipeline Success
+![Pipeline Screenshot](./pipeline.png)
 
 ### ✅ Kubernetes Configuration
 - **Deployment**: 2 replicas for high availability
