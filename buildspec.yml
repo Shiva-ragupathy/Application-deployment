@@ -5,8 +5,6 @@ phases:
     commands:
       - echo Installing kubectl
       - curl -LO "https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl"
-      - ls -l kubectl
-      - file kubectl
       - chmod +x kubectl
       - mv kubectl /usr/local/bin/
       - kubectl version --client
@@ -18,11 +16,15 @@ phases:
 
   build:
     commands:
-      - echo Deploying application to EKS
-      - kubectl apply -f k8s/deployment.yaml    # ← Added k8s/ prefix
-      - kubectl apply -f k8s/service.yaml        # ← Added k8s/ prefix
-      - kubectl rollout status deployment/brain-app  # ← Added to verify deployment
+      - echo Building Docker image
+      - docker build -t shivark1996/brain-tasks-app:latest .
+      - docker push shivark1996/brain-tasks-app:latest
 
   post_build:
     commands:
-      - echo Deployment completed successfully
+      - echo Deploying to EKS
+      - kubectl apply -f k8s/deployment.yaml
+      - kubectl apply -f k8s/service.yaml
+      - kubectl rollout status deployment/brain-app
+      - kubectl get pods
+      - kubectl get svc
