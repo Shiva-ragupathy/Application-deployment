@@ -87,6 +87,8 @@ GitHub Repository → CodePipeline → CodeBuild → Docker Hub → AWS EKS → 
 kubectl get pods
 kubectl get svc
 kubectl get deployments
+```
+## 📚 Documentation
 
-
-
+For complete step-by-step documentation of what I accomplished, please refer to:
+- **[Application Deployment.pdf](./docs/Application%20deployment.Pdf)** - Complete manual and implementation guide.
