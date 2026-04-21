@@ -4,17 +4,11 @@ phases:
   install:
     commands:
       - echo Installing kubectl
-
-      # ✅ stable official Kubernetes download (FIX)
       - curl -LO "https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl"
-
-      # safety check
       - ls -l kubectl
       - file kubectl
-
       - chmod +x kubectl
       - mv kubectl /usr/local/bin/
-
       - kubectl version --client
 
   pre_build:
@@ -25,8 +19,9 @@ phases:
   build:
     commands:
       - echo Deploying application to EKS
-      - kubectl apply -f deployment.yaml
-      - kubectl apply -f service.yaml
+      - kubectl apply -f k8s/deployment.yaml    # ← Added k8s/ prefix
+      - kubectl apply -f k8s/service.yaml        # ← Added k8s/ prefix
+      - kubectl rollout status deployment/brain-tasks-app  # ← Added to verify deployment
 
   post_build:
     commands:
