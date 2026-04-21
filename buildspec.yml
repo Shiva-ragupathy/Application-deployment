@@ -4,9 +4,18 @@ phases:
   install:
     commands:
       - echo Installing kubectl
-      - curl -o kubectl https://s3.amazonaws.com/amazon-eks/1.29.0/2023-12-01/bin/linux/amd64/kubectl
+
+      # ✅ stable official Kubernetes download (FIX)
+      - curl -LO "https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl"
+
+      # safety check
+      - ls -l kubectl
+      - file kubectl
+
       - chmod +x kubectl
       - mv kubectl /usr/local/bin/
+
+      - kubectl version --client
 
   pre_build:
     commands:
